@@ -1,5 +1,8 @@
+import random
+
 board = [[".",".","."],[".",".","."],[".",".","."]]
 restart="y"
+players = ["x", "o"]
 
 def draw():
     print("\n  1 2 3")
@@ -58,7 +61,7 @@ def take(player):
 def game():
     global board
     board = [[".",".","."],[".",".","."],[".",".","."]]
-    player="x"
+    player=random.choice(players)
     endcheck=True
     turns=0
     while(endcheck):
@@ -83,5 +86,3 @@ while(restart in "yY"):
     game()
     draw()
     restart = input("New Game?(yY) ")
-    if(restart not in "yY"):
-        break
