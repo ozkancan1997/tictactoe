@@ -1,4 +1,5 @@
 board = [[".",".","."],[".",".","."],[".",".","."]]
+restart="y"
 
 def draw():
     print("\n  1 2 3")
@@ -46,7 +47,7 @@ def take(player):
             return 0
         y = int(select_string[1])
         if(y not in [1,2,3]):
-            print("Faulty Input: " + y)
+            print("Faulty Input: " + str(y))
             return 0
         selected[1]=y-1
         if(board[selected[0]][selected[1]]!="."):
@@ -55,6 +56,8 @@ def take(player):
         return selected
 
 def game():
+    global board
+    board = [[".",".","."],[".",".","."],[".",".","."]]
     player="x"
     endcheck=True
     turns=0
@@ -75,5 +78,10 @@ def game():
         else:
             player="x"
 
-game()
-draw()
+
+while(restart in "yY"):
+    game()
+    draw()
+    restart = input("New Game?(yY) ")
+    if(restart not in "yY"):
+        break
